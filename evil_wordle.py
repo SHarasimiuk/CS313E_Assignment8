@@ -92,15 +92,15 @@ class Keyboard:
         word_list = list(guessed_word)
         for i in range(len(feedback_colors)):
             if feedback_colors[i] == CORRECT_COLOR:
-                self.colors[word_list[i]] = [CORRECT_COLOR]
+                self.colors[word_list[i]] = CORRECT_COLOR
                 word_list[i] = "-"
         for i in range(len(feedback_colors)):
             if feedback_colors[i] == WRONG_SPOT_COLOR and word_list[i] != "-":
-                self.colors[word_list[i]] = [WRONG_SPOT_COLOR]
+                self.colors[word_list[i]] = WRONG_SPOT_COLOR
                 word_list[i] = "-"
         for i in range(len(feedback_colors)):
             if feedback_colors[i] == NOT_IN_WORD_COLOR and word_list[i] != "-":
-                self.colors[word_list[i]] = [NOT_IN_WORD_COLOR]
+                self.colors[word_list[i]] = NOT_IN_WORD_COLOR
 
     def __str__(self):
         """
@@ -126,17 +126,17 @@ class Keyboard:
         """
         keyboard = ""
         for char in self.rows[0]:
-            keyboard += color_word(self.colors[char], char)
+            keyboard += color_word([self.colors[char]], char)
             keyboard += " "
         keyboard = keyboard[:-1]
         keyboard += "\n "
         for char in self.rows[1]:
-            keyboard += color_word(self.colors[char], char)
+            keyboard += color_word([self.colors[char]], char)
             keyboard += " "
         keyboard = keyboard[:-1]
         keyboard += "\n   "
         for char in self.rows[2]:
-            keyboard += color_word(self.colors[char], char)
+            keyboard += color_word([self.colors[char]], char)
             keyboard += " "
         keyboard = keyboard[:-1]
         return keyboard
