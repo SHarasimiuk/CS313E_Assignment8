@@ -93,13 +93,11 @@ class Keyboard:
         for i in range(len(feedback_colors)):
             if feedback_colors[i] == CORRECT_COLOR:
                 self.colors[word_list[i]] = CORRECT_COLOR
-                word_list[i] = "-"
         for i in range(len(feedback_colors)):
-            if feedback_colors[i] == WRONG_SPOT_COLOR and word_list[i] != "-":
+            if feedback_colors[i] == WRONG_SPOT_COLOR and self.colors[word_list[i]] != CORRECT_COLOR:
                 self.colors[word_list[i]] = WRONG_SPOT_COLOR
-                word_list[i] = "-"
         for i in range(len(feedback_colors)):
-            if feedback_colors[i] == NOT_IN_WORD_COLOR and word_list[i] != "-":
+            if feedback_colors[i] == NOT_IN_WORD_COLOR and self.colors[word_list[i]] != WRONG_SPOT_COLOR and self.colors[word_list[i]] != CORRECT_COLOR:
                 self.colors[word_list[i]] = NOT_IN_WORD_COLOR
 
     def __str__(self):
